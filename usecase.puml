@@ -1,0 +1,16 @@
+@startuml
+actor  x
+dani-->(merge cu bicicleta )
+utilizatorul-->(afiseaza o fereastra care contine un formular)
+utilizatorul-->(afiseaza butonul de SCAN)
+utilizatorul-->(afiseaza automata data si nume)
+
+
+
+
+
+
+
+
+
+@enduml
