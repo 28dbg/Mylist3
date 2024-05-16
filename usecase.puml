@@ -1,16 +1,15 @@
 @startuml
-actor  x
-dani-->(merge cu bicicleta )
-utilizatorul-->(afiseaza o fereastra care contine un formular)
-utilizatorul-->(afiseaza butonul de SCAN)
-utilizatorul-->(afiseaza automata data si nume)
-
-
-
-
-
-
-
-
+actor utilizator
+utilizator-up-> (se afiseaza toate mesajele si continutul din aplicatie in limba respectiva ): selecteaza limba
+utilizator--> (este directionat in pagina de creare cont): selecteaza creare cont
+utilizator--> (introduce e-mail-lul si parola aferanta contului): alege Google sau Facebook
+utilizator--> (aplicatia se va loga): introduce datele de logare corect
+utilizator--> (aplicatia afiseaza pagina “Am deja cont): selecteaza am deja cont
+utilizator--> (afiseaza judetul): selecteaza judetul
+utilizator--> (afiseaza localitatea): selecteaza localitatea
+utilizator--> (afiseaza o eroare in dreptul numelui sau parolei): introduce datele incorect
+utilizator--> (introduce nume de cont deja utilizat): sugereaza nume neutilizat
+utilizator-left-> (magazinele care vor fi afisate in momentul in care isi face lista de cumparaturi): selecteaza magazinele
+utilizator-right-> (se formeaza lista de cumparaturi): selecteaza
 
 @enduml
