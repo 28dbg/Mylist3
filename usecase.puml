@@ -1,15 +1,28 @@
 @startuml
 actor utilizator
+actor localizare_GPS
 utilizator-up-> (se afiseaza toate mesajele si continutul din aplicatie in limba respectiva ): selecteaza limba
-utilizator--> (este directionat in pagina de creare cont): selecteaza creare cont
+utilizator--> (se deschide pagina de logare):selecteaza butonul continua
+utilizator--> (se deschide pagina de creare cont):selecteaza Creare cont
 utilizator--> (introduce e-mail-lul si parola aferanta contului): alege Google sau Facebook
-utilizator--> (aplicatia se va loga): introduce datele de logare corect
-utilizator--> (aplicatia afiseaza pagina “Am deja cont): selecteaza am deja cont
-utilizator--> (afiseaza judetul): selecteaza judetul
-utilizator--> (afiseaza localitatea): selecteaza localitatea
-utilizator--> (afiseaza o eroare in dreptul numelui sau parolei): introduce datele incorect
-utilizator--> (introduce nume de cont deja utilizat): sugereaza nume neutilizat
-utilizator-left-> (magazinele care vor fi afisate in momentul in care isi face lista de cumparaturi): selecteaza magazinele
-utilizator-right-> (se formeaza lista de cumparaturi): selecteaza
+utilizator--> (introduce numele si numele de utilizator):introduce numele de utilizator unic, aplicatia va salva datele
+utilizator--> (numele de utilizator care este deja folosit):se afiseaza o eroare in dreptul butonului nume de utilizator
+utilizator--> (alege din lista localitatea si judetul): selecteaza judet si (alege din lista localitatea si judetul)
+utilizator--> (se verifica sirul de caractere[utilizator]@[domeniul]): tasteaza e-mail
+utilizator--> (introducere parola fara caracterele specifice): afiseaza eroare in dreptul parolei
+utilizator--> (bifeaza cele trei butoane si completeaza toate chenarele cu datele aferente fiecaruia): se afiseaza pagina de pornire
+utilizator--> (se afiseaza pagina ,,Am deja cont"): selecteaza ,,Am deja cont"
+utilizator--> (verifica e-mailul si parola daca se afla in sistem): tasteaza e-mail-lul si parola
+utilizator--> (afiseaza locatia): perimite localizare GPS
+localizare_GPS--> (determina coordonatele GPS ale utilizatorului si implicit a magazinelor): ce face?
+utilizator--> ( se afiseaza locatile magazinelor ):introduce numele magazinelor
+utilizator--> (se afiseaza toate magazinele din aplicatia):selecteaza magazine
+utilizator--> (selecteaza magazinele): bifeaza casuta din dreptul magazinului
+utilizator--> (ofertele active in perioada respectiva ): selecteaza ofertele
+utilizator--> (se deschide harta si apar toate magazinele selectate de el): selecteaza magazine din apropiere
+utilizator--> (vizualizeaza listele de cumparaturi achizitionate): selecteaza butonul "liste de cumparaturi"
+utilizator--> (se afiseaza data cand a fost facuta, produsele si cantitatea acestora ):selecteaza o lista de cumparaturi
+utilizator--> (afiseaza listele de cumparaturi care urmeaza sa fie achizitionate din magazin ):selecteaza cosul de cumparaturi
+
 
 @enduml
