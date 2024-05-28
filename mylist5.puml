@@ -1,62 +1,82 @@
 @startuml
-class limba {
-engleza
-romana
-maghiara
+
+class dropdownlist_limba {
+optiune_limba
+
+
 }
+
 class prima_pagina {
-text selecteaza limba
+text_selecteaza_limba
 lista selecteaza limba
-sageata continua
+sageata "continua"
+afiseaza_text(selecteaza_limba)
 }
+
+prima_pagina <-- limba
 
  class pagina_de_logare {
 text Bun venit(...)
 creare cont
 am deja cont
 }
+
+pagina_de_logare <-- text_am_deja_cont
+pagina_de_logare <-- text_creare_cont
+
  class text_creare_cont {
 platforma google
 platforma facebook
 casuta nume
-casuta nume_utilizator
+casuta nume utilizator
 casuta judet
 casuta localitate
-casuta e-mail
+casuta pentru adresa e-mail
 casuta parola
 casuta confirmare parola
 trei butoane
 }
 note left of text_creare_cont : numele de utilizator trebuie sa fie unic, in caz contrar, aplicatia va sugera cateva optiuni
 
-
-
 class judet {
-lista_ordine_alfabetica
-judet_Romania
+label
+lista ordine alfabetica
+judet Romania
 
 }
 class localitate {
+label
 lista_ordine_alfabetica
 localitate_Romania
 }
-class e-mail {
-sir_de_caractere_[utilizator]@[domeniu]
-
+class E_mail {
+label
+sir de caractere [utilizator]@[domeniu]
 }
+
 class parola {
+label
 parola
-litera_mica
+litera mica
 majuscula
 simbol
 cifra
-minim_8_caractere
+minim 8 caractere
 }
+
+text_creare_cont <-- judet
+text_creare_cont <-- localitate
+text_creare_cont <-- parola
+text_creare_cont <-- E_mail
+
  class text_am_deja_cont{
-e-mail
-forma[utilizator]@[domeniul]
+casuta cu adresa de e-mail
+format [utilizator]@[domeniul]
 parola
 }
+
+text_am_deja_cont <-- E_mail
+
 note left: aplicatia verifica datele daca exista in baza de date
 
 class pagina_de_pornire {
@@ -78,23 +98,28 @@ coordonatele GPS ale magazinelor
 }
 
 class magazine {
-Kaufland
-Lidl
-Profi
-Auchan
-Carrefour
-Penny
+nume magazin// sir de caractere
 }
 
-class oferte {}
+class oferte {
+nume magazin// sir de caractere
+data valabilitatii
+pretul produsului
+}
+
 class liste_de_cumparaturi_finalizate {
 coordonatele magazinului de unde au fost achitionate produsele
 pretul listei de cumparaturi
+}
+
+class lista_de_cumparaturi_finalizata {
 data achizitionarii
 cantitatea produselor
 chenar pentru confirmarea achitionarii
 totalul listei de cumparaturi
 }
+
+liste_de_cumparaturi_finalizate <-- lista_de_cumparaturi_finalizata
 
 class cos_de_cumparaturi {
 lista care urmaza sa fie achizitionata din magazin
@@ -102,6 +127,20 @@ denumirea produsului
 cantitatea produsului
 chenar pentru confirmarea achitionarii
 }
+
+class creare_lista_de_cumparaturi {
+
+
+}
+pagina_de_pornire <-- adresa
+pagina_de_pornire <-- bara_de_cautare
+pagina_de_pornire <-- magazine
+pagina_de_pornire <-- oferte
+pagina_de_pornire <-- liste_de_cumparaturi_finalizate
+pagina_de_pornire <-- cos_de_cumparaturi
+pagina_de_pornire <-- creare_lista_de_cumparaturi
+
+
 
 
 @enduml
