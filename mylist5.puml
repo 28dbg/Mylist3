@@ -2,56 +2,69 @@
 
 class dropdownlist_limba {
 optiune_limba
-
-
 }
 
 class prima_pagina {
 text_selecteaza_limba
-lista selecteaza limba
-sageata "continua"
-afiseaza_text(selecteaza_limba)
+lista_selecteaza_limba
+sageata_"continua"
+afiseaza_text_selecteaza_limba()
 }
 
-prima_pagina <-- limba
+prima_pagina -- dropdownlist_limba
+
 
  class pagina_de_logare {
-text Bun venit(...)
-creare cont
-am deja cont
+text_Bun_venit(...)
+creare_cont
+am_deja_cont
+afisare_text_Bun_venit(...)
 }
 
-pagina_de_logare <-- text_am_deja_cont
-pagina_de_logare <-- text_creare_cont
+pagina_de_logare -- text_am_deja_cont
+pagina_de_logare -- text_creare_cont
 
  class text_creare_cont {
-platforma google
-platforma facebook
-casuta nume
-casuta nume utilizator
-casuta judet
-casuta localitate
-casuta pentru adresa e-mail
-casuta parola
-casuta confirmare parola
-trei butoane
+buton_google
+buton_facebook
+chenar_nume
+chenar_nume_utilizator
+chenar_judet
+chenar_localitate
+chenar_e-mail
+chenar_parola
+chenar_confirmare parola
+trei_butoane
+verifica_nume_de_utilizator
+afiseaza_buton_google()
+afiseaza_buton_facebook()
+afiseaza_chenar_nume()
+afiseaza_chenar_nume_utilizator()
+afiseaza_chenar_judet()
+afiseaza_chenar_localitate()
+afiseaza_chenar_e-mail()
+afiseaza_chenar_parola()
+afiseaza_chenar_confirmare_parola()
+afiseaza_cele_trei_butone_de_bifat()
+
 }
-note left of text_creare_cont : numele de utilizator trebuie sa fie unic, in caz contrar, aplicatia va sugera cateva optiuni
 
 class judet {
 label
-lista ordine alfabetica
-judet Romania
-
+afiseaza_text_selecteza_judet()
+afiseaza_dropdownlist_in_ordine_alfabetica_judet()
 }
+
 class localitate {
 label
-lista_ordine_alfabetica
-localitate_Romania
+afiseaza_text_selecteaza_localitate()
+afiseaza_dropdownlist_in_ordine_alfabetica_localitate()
 }
+
 class E_mail {
 label
-sir de caractere [utilizator]@[domeniu]
+verifica_sir_de_caractere_[utilizator]@[domeniu]
+
 }
 
 class parola {
@@ -61,7 +74,9 @@ litera mica
 majuscula
 simbol
 cifra
-minim 8 caractere
+minim_8_caractere
+verica_sir_de_caractere()
+verifica_minim_8_caractere()
 }
 
 text_creare_cont <-- judet
@@ -70,35 +85,48 @@ text_creare_cont <-- parola
 text_creare_cont <-- E_mail
 
  class text_am_deja_cont{
-casuta cu adresa de e-mail
-format [utilizator]@[domeniul]
-parola
+label_e-mail
+format_[utilizator]@[domeniul]
+label_parola
+verifica_adresa_de_e-mail()
+verifica_parola()
+verifica_cont_existent()
+
 }
 
 text_am_deja_cont <-- E_mail
 
-note left: aplicatia verifica datele daca exista in baza de date
-
 class pagina_de_pornire {
 adresa
-bara de cautare
+bara_de_cautare
 magazine
 oferte
-iconita "creare lista de cumparaturi"
+iconita_"creare_lista_de_cumparaturi"
+afiseaza_adresa()
+afiseaza_bara_de_cautare()
+afiseaza_magazine()
+afiseaza_oferte()
+afiseaza_iconita_"creare_lista_de_cumparaturi"()
 }
 
 class adresa{
-localizare coordonate gps de la utilizator
+localizare_coordonate_gps_de_la_utilizator
+obtine_coordonate_GPS_de_la_utilizator_prin_functia_"Locatie"()
 }
-note right: utilizatorul trebuie sa porneasca functia "Locatie" din telefon pentru furnizarea coordonatelor GPS
+
 
 class bara_de_cautare {
-adresa magazinului
-coordonatele GPS ale magazinelor
+adresa_magazinului
+coordonatele_GPS_ale_magazinelor
+afiseaza_bara_de_cautare ()
+obtine_coordonatele_magazinelor ()
+afiseaza_bara_de_cautare ()
+
 }
 
 class magazine {
-nume magazin// sir de caractere
+nume_magazin
+verifica_sir_de_caractere_magazine
 }
 
 class oferte {
