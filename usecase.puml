@@ -7,17 +7,18 @@ utilizator--> (se deschide pagina de creare cont):selecteaza Creare cont
 utilizator--> (introduce e-mail-lul si parola aferanta contului): alege Google sau Facebook
 utilizator--> (introduce numele si numele de utilizator):introduce numele de utilizator unic, aplicatia va salva datele
 utilizator--> (numele de utilizator care este deja folosit):se afiseaza o eroare in dreptul butonului nume de utilizator
-utilizator--> (alege din lista localitatea si judetul): selecteaza judet si (alege din lista localitatea si judetul)
+utilizator--> (alege din lista localitatea si judetul): selecteaza judet si localitatea
 utilizator--> (se verifica sirul de caractere[utilizator]@[domeniul]): tasteaza e-mail
 utilizator--> (introducere parola fara caracterele specifice): afiseaza eroare in dreptul parolei
 utilizator--> (bifeaza cele trei butoane si completeaza toate chenarele cu datele aferente fiecaruia): se afiseaza pagina de pornire
-utilizator--> (se afiseaza pagina ,,Am deja cont"): selecteaza ,,Am deja cont"
+utilizator--> (afiseaza pagina ,,Am deja cont"): selecteaza ,,Am deja cont"
 utilizator--> (verifica e-mailul si parola daca se afla in sistem): tasteaza e-mail-lul si parola
-utilizator--> (afiseaza locatia): perimite localizare GPS
-localizare_GPS--> (determina coordonatele GPS ale utilizatorului si implicit a magazinelor): ce face?
+utilizator--> (afiseaza locatia): permite localizare GPS
+utilizator--> (selecteaza "in timpul folosirii aplicatie", "intotdeauna" sau "niciodata "): obtine coordonate GPS
+localizare_GPS--> (determina coordonatele GPS ale utilizatorului ): activeaza butonul ,,locatia"
 utilizator--> ( se afiseaza locatile magazinelor ):introduce numele magazinelor
 utilizator--> (se afiseaza toate magazinele din aplicatia):selecteaza magazine
-utilizator--> (selecteaza magazinele): bifeaza casuta din dreptul magazinului
+utilizator--> ( bifeaza casuta din dreptul magazinului):selecteaza magazinele
 utilizator--> (ofertele active in perioada respectiva ): selecteaza ofertele
 utilizator--> (se deschide harta si apar toate magazinele selectate de el): selecteaza magazine din apropiere
 utilizator--> (vizualizeaza listele de cumparaturi achizitionate): selecteaza butonul "liste de cumparaturi"
