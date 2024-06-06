@@ -2,6 +2,7 @@
 
 class dropdownlist_limba {
 optiune_limba
+afiseaza_optiune_limba()
 }
 
 class prima_pagina {
@@ -48,6 +49,14 @@ afiseaza_chenar_confirmare_parola()
 afiseaza_cele_trei_butone_de_bifat()
 
 }
+class nume_de_utilizator {
+label
+nume_de_utilizator_unic
+afiseaza_nume_de_utilizator ()
+verifica_nume_de_utilizator_daca_exsita_in_baza_de_date
+sugereaza_nume_de_utilizator_care_nu_a_mai_fost_folosit
+
+}
 
 class judet {
 label
@@ -79,10 +88,10 @@ verica_sir_de_caractere()
 verifica_minim_8_caractere()
 }
 
-text_creare_cont <-- judet
-text_creare_cont <-- localitate
-text_creare_cont <-- parola
-text_creare_cont <-- E_mail
+text_creare_cont -- judet
+text_creare_cont -- localitate
+text_creare_cont -- parola
+text_creare_cont -- E_mail
 
  class text_am_deja_cont{
 label_e-mail
@@ -94,7 +103,7 @@ verifica_cont_existent()
 
 }
 
-text_am_deja_cont <-- E_mail
+text_am_deja_cont -- E_mail
 
 class pagina_de_pornire {
 adresa
@@ -126,28 +135,40 @@ afiseaza_bara_de_cautare ()
 
 class magazine {
 nume_magazin
-verifica_sir_de_caractere_magazine
+afiseaza_sir_de_caractere_magazine()
 }
 
 class oferte {
-nume magazin// sir de caractere
-data valabilitatii
-pretul produsului
+nume_magazin
+afiseaza_sirul_de_caractere_pentru_magazin()
+termenul_ofertei
+afiseaza_termenul_ofertei()
+pretul_produsului
+afiseaza_pretul_produsului()
 }
 
 class liste_de_cumparaturi_finalizate {
-coordonatele magazinului de unde au fost achitionate produsele
-pretul listei de cumparaturi
+coordonatele_magazinului_de_unde_au_fost_achitionate_produsele
+preia_coordonatele_magazinului_de_unde_au_fost_achizitionate_produsele()
+afiseaza_numele_magazinului()
+pretul_listei_de_cumparaturi
+afiseaza_pretul_listei_de_cumparaturi()
+
 }
 
 class lista_de_cumparaturi_finalizata {
-data achizitionarii
-cantitatea produselor
-chenar pentru confirmarea achitionarii
-totalul listei de cumparaturi
+data_achizitionarii
+afiseaza_data_achizitionarii()
+cantitatea_produselor
+afiseaza_cantitatea_produselor()
+chenar_pentru_confirmarea_achitionarii_unui_produs
+afiseaza_chenar_pentru_confirmare_achizitionarii_unui_produs()
+totalul_listei_de_cumparaturi
+afiseaza_totalul_listei_de_cumparaturi()
+
 }
 
-liste_de_cumparaturi_finalizate <-- lista_de_cumparaturi_finalizata
+liste_de_cumparaturi_finalizate -- lista_de_cumparaturi_finalizata
 
 class cos_de_cumparaturi {
 lista care urmaza sa fie achizitionata din magazin
@@ -160,13 +181,13 @@ class creare_lista_de_cumparaturi {
 
 
 }
-pagina_de_pornire <-- adresa
-pagina_de_pornire <-- bara_de_cautare
-pagina_de_pornire <-- magazine
-pagina_de_pornire <-- oferte
-pagina_de_pornire <-- liste_de_cumparaturi_finalizate
-pagina_de_pornire <-- cos_de_cumparaturi
-pagina_de_pornire <-- creare_lista_de_cumparaturi
+pagina_de_pornire -- adresa
+pagina_de_pornire -- bara_de_cautare
+pagina_de_pornire -- magazine
+pagina_de_pornire -- oferte
+pagina_de_pornire -- liste_de_cumparaturi_finalizate
+pagina_de_pornire -- cos_de_cumparaturi
+pagina_de_pornire -- creare_lista_de_cumparaturi
 
 
 
