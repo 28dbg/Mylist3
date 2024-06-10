@@ -4,6 +4,13 @@ class dropdownlist_limba {
 optiune_limba
 afiseaza_optiune_limba()
 }
+class sageata_continua {
+label
+afiseaza_pagina_de_logare()
+
+}
+
+sageata_continua *-- pagina_de_logare
 
 class prima_pagina {
 text_selecteaza_limba
@@ -12,8 +19,8 @@ sageata_"continua"
 afiseaza_text_selecteaza_limba()
 }
 
-prima_pagina -- dropdownlist_limba
-
+prima_pagina *-- dropdownlist_limba
+prima_pagina o-- sageata_continua
 
  class pagina_de_logare {
 text_Bun_venit(...)
@@ -53,10 +60,12 @@ class nume_de_utilizator {
 label
 nume_de_utilizator_unic
 afiseaza_nume_de_utilizator ()
-verifica_nume_de_utilizator_daca_exsita_in_baza_de_date
-sugereaza_nume_de_utilizator_care_nu_a_mai_fost_folosit
+verifica_nume_de_utilizator_daca_exsita_in_baza_de_date()
+sugereaza_nume_de_utilizator_care_nu_a_mai_fost_folosit()
 
 }
+
+ text_creare_cont *-- nume_de_utilizator
 
 class judet {
 label
@@ -88,10 +97,10 @@ verica_sir_de_caractere()
 verifica_minim_8_caractere()
 }
 
-text_creare_cont -- judet
-text_creare_cont -- localitate
-text_creare_cont -- parola
-text_creare_cont -- E_mail
+text_creare_cont *-- judet
+text_creare_cont *-- localitate
+text_creare_cont *-- parola
+text_creare_cont *-- E_mail
 
  class text_am_deja_cont{
 label_e-mail
@@ -103,7 +112,12 @@ verifica_cont_existent()
 
 }
 
-text_am_deja_cont -- E_mail
+text_am_deja_cont *-- E_mail
+
+class locatie {
+chenar_cu_trei_optiuni
+afiseaza_un_chenar_cu_cele_trei_optiuni()
+}
 
 class pagina_de_pornire {
 adresa
@@ -120,7 +134,7 @@ afiseaza_iconita_"creare_lista_de_cumparaturi"()
 
 class adresa{
 localizare_coordonate_gps_de_la_utilizator
-obtine_coordonate_GPS_de_la_utilizator_prin_functia_"Locatie"()
+obtine_coordonate_GPS_de_la_utilizator_prin_activarea_functiei_"Locatie"()
 }
 
 
@@ -129,7 +143,7 @@ adresa_magazinului
 coordonatele_GPS_ale_magazinelor
 afiseaza_bara_de_cautare ()
 obtine_coordonatele_magazinelor ()
-afiseaza_bara_de_cautare ()
+afiseaza_locatia_magazinului()
 
 }
 
@@ -168,7 +182,7 @@ afiseaza_totalul_listei_de_cumparaturi()
 
 }
 
-liste_de_cumparaturi_finalizate -- lista_de_cumparaturi_finalizata
+liste_de_cumparaturi_finalizate *-- lista_de_cumparaturi_finalizata
 
 class cos_de_cumparaturi {
 lista care urmaza sa fie achizitionata din magazin
@@ -181,13 +195,13 @@ class creare_lista_de_cumparaturi {
 
 
 }
-pagina_de_pornire -- adresa
-pagina_de_pornire -- bara_de_cautare
-pagina_de_pornire -- magazine
-pagina_de_pornire -- oferte
-pagina_de_pornire -- liste_de_cumparaturi_finalizate
-pagina_de_pornire -- cos_de_cumparaturi
-pagina_de_pornire -- creare_lista_de_cumparaturi
+pagina_de_pornire o-- adresa
+pagina_de_pornire o-- bara_de_cautare
+pagina_de_pornire o-- magazine
+pagina_de_pornire o-- oferte
+pagina_de_pornire o-- liste_de_cumparaturi_finalizate
+pagina_de_pornire o-- cos_de_cumparaturi
+pagina_de_pornire o-- creare_lista_de_cumparaturi
 
 
 
