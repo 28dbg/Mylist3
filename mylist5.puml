@@ -6,11 +6,8 @@ afiseaza_optiune_limba()
 }
 class sageata_continua {
 label
-afiseaza_pagina_de_logare()
-
+click()
 }
-
-sageata_continua *-- pagina_de_logare
 
 class prima_pagina {
 text_selecteaza_limba
@@ -20,7 +17,7 @@ afiseaza_text_selecteaza_limba()
 }
 
 prima_pagina *-- dropdownlist_limba
-prima_pagina o-- sageata_continua
+pagina_de_logare - sageata_continua :< afiseaza
 
  class pagina_de_logare {
 text_Bun_venit(...)
@@ -82,7 +79,6 @@ afiseaza_dropdownlist_in_ordine_alfabetica_localitate()
 class E_mail {
 label
 verifica_sir_de_caractere_[utilizator]@[domeniu]
-
 }
 
 class parola {
@@ -98,13 +94,14 @@ verifica_minim_8_caractere()
 }
 
 text_creare_cont *-- judet
+text_creare_cont --> "1" judet
 text_creare_cont *-- localitate
+text_creare_cont --> "1" localitate
 text_creare_cont *-- parola
 text_creare_cont *-- E_mail
 
  class text_am_deja_cont{
 label_e-mail
-format_[utilizator]@[domeniul]
 label_parola
 verifica_adresa_de_e-mail()
 verifica_parola()
@@ -144,24 +141,34 @@ coordonatele_GPS_ale_magazinelor
 afiseaza_bara_de_cautare ()
 obtine_coordonatele_magazinelor ()
 afiseaza_locatia_magazinului()
-
 }
 
-class magazine {
+class magazin {
 nume_magazin
 afiseaza_sir_de_caractere_magazine()
 }
 
-class oferte {
+class oferta {
+lista_de_magazine
+afisare_lista_de_produse ()
 nume_magazin
 afiseaza_sirul_de_caractere_pentru_magazin()
-termenul_ofertei
-afiseaza_termenul_ofertei()
 pretul_produsului
 afiseaza_pretul_produsului()
 }
+ oferta *-- interval_valabilitate_oferta
 
-class liste_de_cumparaturi_finalizate {
+class interval_valabilitate_oferta {
+interval_valabilitate_inceput
+interval_valabilitate_sfarsit
+afiseaza_data_de_valabilitate ()
+verifica_data_in_interval ()
+set_interval_inceput ()
+set_interval_sfarsit ()
+}
+class istoric_lista_de_cumparaturi_finalizata {
+lista_cu_produse
+afisare_lista_de_produse ()
 coordonatele_magazinului_de_unde_au_fost_achitionate_produsele
 preia_coordonatele_magazinului_de_unde_au_fost_achizitionate_produsele()
 afiseaza_numele_magazinului()
@@ -173,6 +180,8 @@ afiseaza_pretul_listei_de_cumparaturi()
 class lista_de_cumparaturi_finalizata {
 data_achizitionarii
 afiseaza_data_achizitionarii()
+lista_produse
+afisarea_listei_cu_produse ()
 cantitatea_produselor
 afiseaza_cantitatea_produselor()
 chenar_pentru_confirmarea_achitionarii_unui_produs
@@ -185,23 +194,33 @@ afiseaza_totalul_listei_de_cumparaturi()
 liste_de_cumparaturi_finalizate *-- lista_de_cumparaturi_finalizata
 
 class cos_de_cumparaturi {
-lista care urmaza sa fie achizitionata din magazin
-denumirea produsului
-cantitatea produsului
-chenar pentru confirmarea achitionarii
+lista_care_urmaza_sa_fie_achizitionata_din_magazin
+afiseaza_lista_care_urmeaza_sa_fie_achizitionata_din_magazin ()
+denumirea_produsului
+afisarea_produselor ()
+cantitatea_produsului
+afisarea_cantitatea_produselor ()
+chenar_pentru_confirmarea_achitionarii_unui_produs
+afisare_buton_confirmarea_achizitionare_a_unui_produs ()
 }
 
 class creare_lista_de_cumparaturi {
 
 
 }
-pagina_de_pornire o-- adresa
-pagina_de_pornire o-- bara_de_cautare
-pagina_de_pornire o-- magazine
-pagina_de_pornire o-- oferte
-pagina_de_pornire o-- liste_de_cumparaturi_finalizate
-pagina_de_pornire o-- cos_de_cumparaturi
-pagina_de_pornire o-- creare_lista_de_cumparaturi
+pagina_de_pornire *-- adresa
+pagina_de_pornire *-- bara_de_cautare
+pagina_de_pornire *-- magazin
+pagina_de_pornire *-- oferta
+pagina_de_pornire *-- liste_de_cumparaturi_finalizate
+pagina_de_pornire *-- cos_de_cumparaturi
+pagina_de_pornire *-- creare_lista_de_cumparaturi
+
+pagina_de_pornire --> "1..*" oferta
+pagina_de_pornire --> "1-7" magazin
+pagina_de_pornire --> "1..*" liste_de_cumparaturi
+pagina_de_pornire --> "1" cos_de_cumparaturi
+pagina_de_pornire --> "1" creare_lista_de_cumparaturi
 
 
 
