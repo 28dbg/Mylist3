@@ -19,7 +19,7 @@ localizare_GPS--> (determina coordonatele GPS ale utilizatorului ): activeaza bu
 utilizator--> ( se afiseaza locatile magazinelor ):introduce numele magazinelor
 utilizator--> (se afiseaza toate magazinele din aplicatia):selecteaza magazine
 utilizator--> ( bifeaza casuta din dreptul magazinului):selecteaza magazinele
-utilizator--> (ofertele active in perioada respectiva ): selecteaza ofertele
+utilizator--> (afiseaza toate ofertele in perioada respectiva ): selecteaza ofertele
 utilizator--> (se deschide harta si apar toate magazinele selectate de el): selecteaza magazine din apropiere
 utilizator--> (vizualizeaza listele de cumparaturi achizitionate): selecteaza butonul "liste de cumparaturi"
 utilizator--> (se afiseaza data cand a fost facuta, produsele si cantitatea acestora ):selecteaza o lista de cumparaturi
