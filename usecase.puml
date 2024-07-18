@@ -1,29 +1,59 @@
 @startuml
+
 actor utilizator
 actor localizare_GPS
-utilizator-up-> (se afiseaza toate mesajele si continutul din aplicatie in limba respectiva ): selecteaza limba
-utilizator--> (se deschide pagina de logare):selecteaza butonul continua
-utilizator--> (se deschide pagina de creare cont):selecteaza Creare cont
-utilizator--> (introduce e-mail-lul si parola aferanta contului): alege Google sau Facebook
-utilizator--> (introduce numele si numele de utilizator):introduce numele de utilizator unic, aplicatia va salva datele
-utilizator--> (numele de utilizator care este deja folosit):se afiseaza o eroare in dreptul butonului nume de utilizator
-utilizator--> (alege din lista localitatea si judetul): selecteaza judet si localitatea
-utilizator--> (se verifica sirul de caractere[utilizator]@[domeniul]): tasteaza e-mail
-utilizator--> (introducere parola fara caracterele specifice): afiseaza eroare in dreptul parolei
-utilizator--> (bifeaza cele trei butoane si completeaza toate chenarele cu datele aferente fiecaruia): se afiseaza pagina de pornire
-utilizator--> (afiseaza pagina ,,Am deja cont"): selecteaza ,,Am deja cont"
-utilizator--> (verifica e-mailul si parola daca se afla in sistem): tasteaza e-mail-lul si parola
-utilizator--> (afiseaza locatia): permite localizare GPS
-utilizator--> (selecteaza "in timpul folosirii aplicatie", "intotdeauna" sau "niciodata "): obtine coordonate GPS
-localizare_GPS--> (determina coordonatele GPS ale utilizatorului ): activeaza butonul ,,locatia"
-utilizator--> ( se afiseaza locatile magazinelor ):introduce numele magazinelor
-utilizator--> (se afiseaza toate magazinele din aplicatia):selecteaza magazine
-utilizator--> ( bifeaza casuta din dreptul magazinului):selecteaza magazinele
-utilizator--> (afiseaza toate ofertele in perioada respectiva ): selecteaza ofertele
-utilizator--> (se deschide harta si apar toate magazinele selectate de el): selecteaza magazine din apropiere
-utilizator--> (vizualizeaza listele de cumparaturi achizitionate): selecteaza butonul "liste de cumparaturi"
-utilizator--> (se afiseaza data cand a fost facuta, produsele si cantitatea acestora ):selecteaza o lista de cumparaturi
-utilizator--> (afiseaza listele de cumparaturi care urmeaza sa fie achizitionate din magazin ):selecteaza cosul de cumparaturi
+utilizator -up-> (se afiseaza toate mesajele si continutul din aplicatie in limba respectiva ): selecteaza limba
+utilizator -up-> (afiseaza fereastra de logare a aplicatiei): apasa butonul "Continua"
+utilizator -up-> (afiseaza fereastra "creare cont") : selecteaza butonul "Creare cont"
+utilizator -up-> (introduce adresa de e-mail si parola aferenta contului) : alege conectarea prin platforma Google sau Facebook
+utilizator -up-> ( introduce datele in campul corespunzator ) : tasteaza numele de utilizator
+utilizator -up-> (numele de utilizator este deja utilizat) : apare o eroare
+utilizator -up-> ( afiseaza sugestii pentru numele de utilizator ) : numele de utilizator tastat este deja folosit
+utilizator -up-> (alege judetul in care locuieste din lista afisata) : selecteaza butonul "Judet"
+utilizator -up-> (alege localitatea in care se afla din lista afisata) : selecteaza butonul "Localitate"
+utilizator -up-> (verifica sirul de caractere [utilizator]@[domeniul]) : tasteaza adresa de e-mail
+utilizator -up-> (tasteaza adresa de e-mail gresit) : apare eroare
+utilizator -up-> ( verifica caractele introduse) : tasteaza parola
+utilizator -up-> (nu introduce o litera mica, o majuscula, un simbol si o cifra) : apare eroare in dreptul chenarului explicitand motivul
+utilizator -up-> (bifeaza cele trei casute) : genereaza conectarea automat
+utilizator -up-> (afiseaza fereastra "Am deja cont") : selecteaza butonul "Am deja cont"
+utilizator -up-> (introduce adresa de e-mail si parola aferenta contului) : alege conectare prin platforma Facebook sau Google
+utilizator -up-> ( verifica ca parola introdusa sa corespunda numelui de utilizator ) : tasteaza parola
+utilizator -up-> (verifica numele de utilizator sa fie in baza de date) : tasteaza numele de utilizator
+utilizator -up-> (afiseaza eroare in dreptul numelui de utilizator) : introduce numele de utilizator gresit
+utilizator -up-> (intorduce datele corect) : genereaza conectarea automat
+utilizator -up-> (permite folosirea locatiei) : alege "in timpul folosiri aplicatie" sau "intotdeanua"
+localizare_GPS --> (obtine coordonatele GPS ale utilizatorului) : activeaza functia "Locatie"
+utilizator --> (afiseaza magazinele in harta pe o raza de aproximativ 2km ) : introduce numele magazinului in bara de cautare
+utilizator --> (afiseaza adresa magazinului) : selecteaza magazinul convenabil
+utilizator --> (afiseaza fereastra "Magazine") : selecteaza butonul "Magazine"
+utilizator --> (afiseaza magazinele dorite) : bifeaza magazinele pe care le doreste
+utilizator --> (schimbarea afisarii pe intregimea paginii) : selecteaza formatul paginii
+utilizator --> (afiseaza fereastra "Oferte") : selecteaza butonul "Oferte"
+utilizator --> (afiseaza harta cu toate magazinele din aplicatie care se afla in apropiere) : selecteaza butonul "Magazine din apropiere"
+utilizator --> (afiseaza listele de cumparaturi pe care le-a creat) : selecteaza butonul "Lista de cumparaturi"
+utilizator --> (afiseaza cantitatea produsului, denumirea, daca a acchizitioanat sau nu produsului din lista printr-o bifa si totalul) : selecteaza o lista de cumparaturi
+utilizator --> (afiseaza fereastra "Creare lista de cumparaturi") : selecteaza butonul "Creare lista de cumparaturi"
+utilizator --> (afiseaza produsele corespunzatoare categoriei) : selecteaza o categorie
+utilizator --> (afiseaza cantitatea) : selecteaza cantitatea dorita
+utilizator --> (prin butoanele "-" si "+" modifica cantitatea minim 1 si maxim 10) : gastioneaza cantitatea unui produs
+utilizator --> (apare produsul in cosul de cumparaturi) : apasa pe butonul "Adauga"
+utilizator --> (afiseaza produsele din cosul de cumparaturi printr-o iconita cu numarul acestora maxim pana la 200) : apasa pe butonul "Adauga"
+utilizator --> (afisarea cosului de cumparaturi cu produsele din acesta si cantitatea) : selecteazaz butonul "Cos de cumparaturi"
+utilizator --> (selecteaza butonul "Total") : genereaza calcularea totalului
+utilizator --> (compara preturile produselor de la toate magazinele selectate de catre client) : selecteaza butonul "Total"
+utilizator --> (afiseaza totalul listei de cumparaturi) : selecteaza butonul "Total"
+utilizator --> (lista de cumparaturi se salveaza) : selecteaza butonul "Finalizeaza"
+utilizator --> (pretul listei se face verde, urmand sa ajunga la totalul acesteia) : bifeaza produsul
+utilizator --> (se afiseaza un butonul "O singura oprire" si butonul "Mai multe opriri") : selecteaza butonul "Total"
+utilizator --> (lista de cumparaturi se salveaza) : selecteaza butonul "O singura oprire"
+utilizator --> (pretul listei de cumparaturi se face verde, urmand sa ajunga la totalul acesteia) : bifeaza produsul
+utilizator --> (analizeaza magazinele selectate, grupeaza produsele minim 3 de la un magazin) : selecteaza butonul "Mai multe opriri"
+utilizator --> (lista de cumpataruri se salveaza) : selecteaza butonul "Mai multe opriri"
+utilizator --> (pretul listei de cumparaturi se face verde, ajungand ulterior la totalul acesteia) : bifeaza produsul
+
+
+
 
 
 @enduml
