@@ -60,7 +60,7 @@ sugereaza_nume_de_utilizator_care_nu_a_mai_fost_folosit()
 
 }
 
- text_creare_cont "1" *-- "1" nume_de_utilizator
+ferestra_Creare_cont "1" *-- "1" nume_de_utilizator
 
 class judet {
 label

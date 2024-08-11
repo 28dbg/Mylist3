@@ -1,0 +1,459 @@
+@startuml
+
+class pagina_principala {
+text_selecteaza_limba
+lista_selecteaza_limba
+sageata_continua
+afiseaza_text_selectaza_limba ()
+}
+
+class dropdownlist_limba {
+optiune_limba
+afiseaza_optiune_limba()
+}
+
+class sageata_continua {
+label
+click()
+}
+
+note bottom : bondery
+
+pagina_principala "1" *-- "1" dropdownlist_limba
+
+class pagina_de_logare {
+text_Bun_venit(..)
+buton_Creare_cont
+afiseaza_buton_creare_cont ()
+buton_Am_deja_cont
+afiseaza_buton_Am_deja_cont ()
+}
+
+class text_Bun_venit {
+afiseaza_text_Bun_venit ()
+}
+
+pagina_de_logare "1" <|-- "1" text_Bun_venit
+pagina_de_logare .. sageata_continua :< afiseaza
+
+class fereastra_Creare_cont {
+buton_Google
+afiseaza_buton_Google ()
+buton_Facebook
+afiseaza_buton_Facebook ()
+casuta_nume
+afiseaza_casuta_nume ()
+casuta_nume_utilizator
+afiseaza_casuta_nume_utilizator ()
+casuta_judet
+afiseaza_casuta_judet ()
+casuta_e-mail
+afiseaza_casuta_e-mail ()
+casuta_parola
+afiseaza_casuta_parola ()
+trei_butoane
+afiseaza_trei_butone ()
+verifica_bifarea_butonelor ()
+verifica_completarea_tuturor_casutelor ()
+genereaza_conectarea_automata_bifarea_celor_trei_casute_si_completarea_casutelor ()
+}
+
+pagina_de_logare "1" *-- "1" fereastra_Creare_cont
+
+class casuta_nume_utilizator {
+label
+nume_unic
+verificare_nume_unic ()
+sugestii_nume_neutilizate ()
+}
+
+fereastra_Creare_cont "1" *-- "1" casuta_nume_utilizator
+
+class casuta_judet {
+label
+lista_in_ordine_alfabetica_cu_judete
+afiseaza_dropdownlist_in_ordine_alfabetica_cu_judete()
+}
+
+fereastra_Creare_cont "1" *-- "1" casuta_judet
+
+class casuta_localitate {
+label
+lista_in_ordine_alfabetica_cu_localitatile
+afisare_dropdownlist_in_ordine_alfabetica_cu_localitatile()
+}
+
+fereastra_Creare_cont "1" *-- "1" casuta_localitate
+
+class casuta_e_mail {
+label
+verifica_sir_de_caractere_[utilizator]@[domeniu]
+}
+
+fereastra_Creare_cont "1" *-- "1" casuta_e_mail
+
+class casuta_parola {
+label
+verifica_sir_de_caractere_ale_parolei ()
+afiseaza_eroare_daca_nu_sunt_folosite_toate_caracterele_pentru_ca_parola_sa_fie_valida ()
+verifica_numarul_minim_de_caractere ()
+afiseaza_eroare_daca_nu_este_folosit_numarul_minim_de_caractere ()
+}
+
+fereastra_Creare_cont "1" *-- "1" casuta_parola
+
+class fereastra_Am_deja_cont {
+buton_Facebook
+afiseaza_buton_Facebook ()
+buton_Google
+afiseaza_buton_Google ()
+casuta_e-mail
+afiseaza_casuta_e-mail ()
+casuta_parola
+afisare_casuta_parola ()
+verifica_daca_contul_exista_in_baza_de_date ()
+afiseaza_eroare_daca_contul_nu_exista_in_baza_de_date ()
+}
+
+pagina_de_logare "1" *-- "1" fereastra_Am_deja_cont
+fereastra_Am_deja_cont "1" *-- "1" casuta_e_mail
+fereastra_Am_deja_cont "1" *-- "1" casuta_parola
+
+class chenar_locatie {
+trei_optiuni
+afiseaza_un_chenar_cu_cele_trei_optiuni()
+}
+
+  note bottom: bondery
+
+class buton_in_timpul_folosirii_aplicatie {
+label
+inregistreaza_coordonatele_GPS_ale_utilizatorului_cand_foloseste_aplicatia ()
+}
+
+chenar_locatie "1" *-- "1" buton_in_timpul_folosirii_aplicatie
+
+class buton_intotdeauna {
+label
+inregistreaza_coordonatele_GPS_ale_utilizatorului_pe_toata_perioada_activarii_functiei_locatie
+}
+
+chenar_locatie "1" *-- "1" buton_intotdeauna
+
+class buton_niciodata {
+label
+nu_inregistreaza_coordonatele_GPS
+}
+
+chenar_locatie "1" *-- "1" buton_niciodata
+
+class pagina_de_pornire {
+buton_adresa_
+afiseaza_buton_adresa ()
+bara_de_cautare
+afiseaza_bara_de_cautare ()
+buton_oferte_de_la_magazine
+afiseaza_buton_oferte_de_la_magazine ()
+buton_magazine_din_apropiere
+afiseaza_buton_magazine_din_apropiere ()
+buton_liste_de_cumparaturi
+afiseaza_buton_liste_de_cumparaturi ()
+buton_cos_de_cumparaturi
+afiseaza_buton_cos_de_cumparaturi ()
+buton_cont
+afiseaza_buton_cont ()
+}
+
+class buton_adresa {
+localizare_coordonate_GPS
+obtine_coordonatele_GPS_prin_activarea_functie_"Locatie" ()
+inregisteaza_coordonatele_GPS ()
+salveaza_coordonatele_GPS ()
+}
+
+pagina_de_pornire "1" *-- "1" buton_adresa
+
+class functia_locatie {
+identifica_locatia_utilizatorului_prin_activarea_functiei_din_telefon
+activarea_functiei_genereaza_transmiterea_de_coordonate_ale_utilizatorului ()
+}
+
+buton_adresa - functia_locatie :> acceseaza
+
+class bara_de_cautare {
+harta
+afisare_harta ()
+verificare_sir_de_caractere ()
+magazinele_pe_harta
+afiseaza_magazinele_pe_harta ()
+adresa_magazinului
+afiseaza_adresa_magazinului ()
+obtine_coordonatele_magazinului ()
+cautarea_magazinelor_pe_o_raza_de_2km_fistanta_fata_de_utilizator
+afisarea_magazinelor_pe_o_raza_de_2km_distanta_fata_de_utilizator ()
+
+}
+
+pagina_de_pornire "1" *-- "1" bara_de_cautare
+
+class fereastra_magazin {
+selectat_neselectat ()
+status
+organizare_de_la_stanga_la_dreapta ()
+organizare_pe_coloane_si_randuri ()
+numele_magazinelor
+afiseaza_numele_magazinelor ()
+}
+
+pagina_de_pornire "1" *-- "1..7" fereastra_magazin
+
+class fereastra_oferta {
+analizeaza_lista_de_magazine_selectate ()
+obtine_ofertele_de_la_magazinele_respective ()
+lista_de_magazine
+afisare_lista_de_produse ()
+nume_magazin
+afiseaza_sirul_de_caractere_pentru_magazin()
+pretul_produsului
+afiseaza_pretul_produsului()
+perioada_de_valabilitate
+}
+
+pagina_de_pornire "1" *-- "1..*" fereastra_oferta
+
+class interval_valabilitate_oferta {
+interval_valabilitate_inceput
+interval_valabilitate_sfarsit
+afiseaza_data_de_valabilitate ()
+verifica_data_in_interval ()
+set_interval_inceput ()
+set_interval_sfarsit ()
+get_interval_inceput ()
+get_interval_sfarsit ()
+}
+
+fereastra_oferta "1" *-- "1" interval_valabilitate_oferta
+
+class buton_magazin_din_apropiere {
+numele_magazinelor
+afiseaza_numele_magazinelor ()
+selectat/neselectat
+label
+harta
+afisare_harta ()
+iconita
+afisare_iconita ()
+afisare_adresa()
+distanta_fata_de_utilizator_cel_mult_2km ()
+}
+
+fereastra_magazin "1..7" *-- "1..7" buton_magazin_din_apropiere
+
+class format {
+aranjarea_paginii
+afisarea_pe_o_coloana ()
+afiarea_pe_doua_coloane ()
+}
+
+note bottom: bondery
+
+fereastra_magazin "7" *-- "2" format
+
+class fereastra_lista_de_cumparaturi {
+lista_cu_produse
+afisare_lista_de_produse ()
+coordonatele_magazinului_de_unde_au_fost_achitionate_produsele
+preia_coordonatele_magazinului_de_unde_au_fost_achizitionate_produsele()
+afiseaza_numele_magazinului()
+pretul_listei_de_cumparaturi
+afiseaza_pretul_listei_de_cumparaturi()
+}
+
+pagina_de_pornire "1" *-- "1" fereastra_lista_de_cumparaturi
+
+class lista_de_cumparaturi_finalizata {
+data_achizitionarii
+afiseaza_data_achizitionarii()
+lista_produse
+afisarea_listei_cu_produse ()
+cantitatea_produselor
+afiseaza_cantitatea_produselor()
+chenar_pentru_confirmarea_achitionarii_unui_produs
+afiseaza_chenar_pentru_confirmare_achizitionarii_unui_produs()
+totalul_listei_de_cumparaturi
+afiseaza_totalul_listei_de_cumparaturi()
+
+}
+
+fereastra_lista_de_cumparaturi "1..*" *-- "1..*" lista_de_cumparaturi_finalizata
+
+class fereastra_cos_de_cumparaturi {
+lista_care_urmaza_sa_fie_achizitionata_din_magazin
+afiseaza_lista_care_urmeaza_sa_fie_achizitionata_din_magazin ()
+denumirea_produsului
+afisarea_produselor ()
+cantitatea_produsului
+afisarea_cantitatea_produselor ()
+chenar_pentru_confirmarea_achitionarii_unui_produs
+afisare_buton_confirmarea_achizitionare_a_unui_produs ()
+}
+
+pagina_de_pornire "1" *-- "1" fereastra_cos_de_cumparaturi
+
+class categorie_produse {
+lista_cu_produse
+afisare_lista_cu_produse()
+denumire_categorie
+afisare_denumire_categorie ()
+}
+
+pagina_de_pornire "1" *-- "17" categorie_produse
+
+class fereastra_creare_lista_de_cumparaturi {
+label
+afisare_lista_cu_categorii_de_produse ()
+}
+
+pagina_de_pornire "1" *-- "1" fereastra_creare_lista_de_cumparaturi
+
+class patiserie {
+}
+
+categorie_produse  <|-- patiserie
+
+class legume_si_fructe {
+}
+
+categorie_produse <|--  legume_si_fructe
+
+class bio_vegan {
+}
+
+categorie_produse <|-- bio_vegan
+
+class lactate {
+}
+
+categorie_produse <|-- lactate
+
+class branzeturi {
+}
+
+categorie_produse <|--  branzeturi
+
+class mezeluri {
+}
+
+categorie_produse <|--  mezeluri
+
+class macelarie_si_peste {
+}
+
+categorie_produse <|--  macelarie_si_peste
+
+class bautura {
+}
+
+categorie_produse <|--  bautura
+
+class bautura_alcoolica {
+acord_peste_18_ani
+verifica_varsta ()
+}
+
+categorie_produse "1" *-- "1" bautura_alcoolica
+
+class produse_cogelate {
+}
+
+categorie_produse <|--  produse_cogelate
+
+class snack {
+}
+
+categorie_produse <|-- snack
+
+class dulce {
+}
+
+categorie_produse <|-- dulce
+
+class semipreparat {
+}
+
+categorie_produse <|-- semipreparat
+
+class ingrijire_personala {
+}
+
+categorie_produse  <|-- ingrijire_personala
+
+class produs_nonalimentare {
+}
+
+categorie_produse  <|-- produs_nonalimentare
+
+class produs_pentru_animal {
+}
+
+categorie_produse <|-- produs_pentru_animal
+
+class produs_pentru_bebe {
+}
+
+categorie_produse <|--  produs_pentru_bebe
+
+
+class produs {
+ label
+ sir_de_caractere
+ afisare_sir_de_caractere ()
+ selectare_cantitate
+ selectare_cantitate
+ }
+
+fereastra_cos_de_cumparaturi "1" *-- "1..200" produs
+
+class cantitate {
+semene_distincte
+afisare_semne ()
+cantitatea_nu_scade_sub_0
+cantitatea_nu_scade_sub_0 ()
+cantitatea_poate_creste_pana_la_10
+cantitatea_poate_creste_pana_la_10 ()
+afiare_cantitate ()
+}
+
+fereastra_cos_de_cumparaturi "1" *-- "1..10" cantitate
+
+class buton_adaugare_produs {
+label
+click ()
+}
+
+fereastra_creare_lista_de_cumparaturi.. buton_adaugare_produs :< adaugare
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@enduml
