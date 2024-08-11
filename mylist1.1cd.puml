@@ -300,6 +300,13 @@ afisare_buton_confirmarea_achizitionare_a_unui_produs ()
 
 pagina_de_pornire "1" *-- "1" fereastra_cos_de_cumparaturi
 
+class cont {
+?????????
+?????
+}
+
+pagina_de_pornire "1" *-- "1" cont
+
 class categorie_produse {
 lista_cu_produse
 afisare_lista_cu_produse()
